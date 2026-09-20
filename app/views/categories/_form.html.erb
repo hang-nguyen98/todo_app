@@ -1,0 +1,37 @@
+<% if category.errors.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_with model: category do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name,
+          class: "form-control",
+          placeholder: "Example: School" %>
+  </div>
+
+
+  <div class="mb-4">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description,
+          class: "form-control",
+          rows: 4,
+          placeholder: "What is this category for?" %>
+  </div>
+
+
+  <div class="d-flex gap-2">
+    <%= form.submit class: "btn btn-app-primary" %>
+    <%= link_to "Cancel",
+          categories_path,
+          class: "btn btn-outline-secondary" %>
+  </div>
+
+<% end %>

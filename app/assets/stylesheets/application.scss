@@ -1,0 +1,161 @@
+:root {
+    --app-dark: #18212f;
+    --app-primary: #5568e8;
+    --app-primary-dark: #4354cb;
+    --app-bg: #f5f7fb;
+    --app-border: #e6e9f0;
+    --app-muted: #6c757d;
+}
+
+body {
+    background-color: var(--app-bg);
+    color: #252a34;
+    min-height: 100vh;
+}
+
+.app-navbar {
+    background: linear-gradient(135deg, #18212f, #26364d);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    letter-spacing: -0.4px;
+}
+
+.navbar .nav-link {
+    border-radius: 8px;
+    margin-right: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    margin-bottom: 0.3rem;
+}
+
+.page-subtitle {
+    color: var(--app-muted);
+    margin-bottom: 0;
+}
+
+.app-card {
+    border: 1px solid var(--app-border);
+    border-radius: 14px;
+    background-color: white;
+    box-shadow: 0 4px 18px rgba(21, 33, 53, 0.05);
+}
+
+.todo-card {
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.todo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(21, 33, 53, 0.09);
+}
+
+.todo-priority {
+    border-left: 5px solid #dc3545;
+}
+
+.todo-completed {
+    opacity: 0.78;
+    background-color: #f3faf6;
+}
+
+.todo-completed .todo-title {
+    text-decoration: line-through;
+    color: #69746e;
+}
+
+.todo-title {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.category-card {
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(21, 33, 53, 0.08);
+}
+
+.auth-container {
+    max-width: 520px;
+    margin: 3rem auto;
+}
+
+.auth-card {
+    padding: 2rem;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    border-radius: 9px;
+    border-color: #dfe3eb;
+    padding: 0.7rem 0.85rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #8695ed;
+    box-shadow: 0 0 0 0.2rem rgba(85, 104, 232, 0.12);
+}
+
+.btn-app-primary {
+    background-color: var(--app-primary);
+    border-color: var(--app-primary);
+    color: white;
+}
+
+.btn-app-primary:hover {
+    background-color: var(--app-primary-dark);
+    border-color: var(--app-primary-dark);
+    color: white;
+}
+
+.empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--app-muted);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #abb2c1;
+}
+
+.detail-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--app-muted);
+    font-weight: 600;
+}
+
+.detail-value {
+    font-size: 1.05rem;
+}
+
+.status-badge {
+    font-weight: 500;
+}

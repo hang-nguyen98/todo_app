@@ -1,0 +1,112 @@
+<div class="row align-items-center py-5">
+
+  <div class="col-lg-6 mb-5 mb-lg-0">
+
+    <span class="badge text-bg-primary mb-3">
+      Simple task management
+    </span>
+
+    <%# <h1 class="display-4 fw-bold mb-3">
+      Organize your work.
+      <br>
+      Finish what matters.
+    </h1> %>
+<%# 
+    <p class="lead text-secondary mb-4">
+      Create categories, organize your ToDos, mark important tasks,
+      and keep track of everything you've completed.
+    </p> %>
+
+    <% if logged_in? %>
+
+      <%= link_to todos_path,
+            class: "btn btn-app-primary btn-lg me-2" do %>
+        <i class="bi bi-list-task me-2"></i>
+        View My ToDos
+      <% end %>
+
+    <% else %>
+
+      <%= link_to signup_path,
+            class: "btn btn-app-primary btn-lg me-2" do %>
+        <i class="bi bi-person-plus me-2"></i>
+        Get Started
+      <% end %>
+
+      <%= link_to login_path,
+            class: "btn btn-outline-secondary btn-lg" do %>
+        Log In
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+
+  <div class="col-lg-6">
+
+    <div class="app-card p-4">
+
+      <div class="d-flex align-items-center mb-4">
+        <div>
+          <h4 class="mb-0">Today's Tasks</h4>
+        </div>
+        <%# TO-DO: edit the code to display the correct task information %>
+        
+        <%# 
+        <span class="badge text-bg-light ms-auto">
+          <i class="bi bi-calendar3 me-1"></i>
+           Today 
+        </span>
+      </div>
+
+        
+        
+      <div class="border rounded-3 p-3 mb-3">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-circle me-3 text-secondary"></i>
+          
+            <div>
+            <strong>Finish Rails project</strong>
+            <div class="small text-secondary">
+              School
+            </div>
+          </div> 
+
+          <span class="badge text-bg-danger ms-auto">
+            Priority
+          </span>
+        </div>
+      </div>
+
+
+      <div class="border rounded-3 p-3 mb-3">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-circle me-3 text-secondary"></i>
+
+          <div>
+            <strong>Buy groceries</strong>
+            <div class="small text-secondary">
+              Personal
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="border rounded-3 p-3 bg-light">
+        <div class="d-flex align-items-center">
+
+          <i class="bi bi-check-circle-fill me-3 text-success"></i>
+
+          <div class="text-decoration-line-through text-secondary">
+            Review assignment requirements
+          </div>
+
+        </div>
+        </div>  %>
+
+    </div>
+  </div>
+
+</div>

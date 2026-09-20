@@ -1,0 +1,143 @@
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center page-header">
+
+  <div>
+    <h1 class="page-title">
+      <i class="bi bi-list-task me-2"></i>
+      My ToDos
+    </h1>
+
+    <p class="page-subtitle">
+      Manage all of your tasks in one place.
+    </p>
+  </div>
+
+
+  <%= link_to new_todo_path,
+        class: "btn btn-app-primary mt-3 mt-md-0" do %>
+    <i class="bi bi-plus-lg me-1"></i>
+    New ToDo
+  <% end %>
+
+</div>
+
+
+<% if @todos.any? %>
+
+  <div class="row g-3">
+
+    <% @todos.each do |todo| %>
+
+      <div class="col-lg-6">
+
+        <div class="
+          app-card
+          todo-card
+          p-4
+          h-100
+          <%= 'todo-priority' if todo.priority? %>
+          <%= 'todo-completed' if todo.completed? %>
+        ">
+
+          <div class="d-flex justify-content-between gap-3">
+
+            <div>
+
+              <h5 class="todo-title">
+                <%= todo.title %>
+              </h5>
+
+              <span class="badge text-bg-light border">
+                <i class="bi bi-folder me-1"></i>
+                <%= todo.category.name %>
+              </span>
+
+            </div>
+
+
+            <div class="text-end">
+
+              <% if todo.priority? %>
+                <span class="badge text-bg-danger status-badge">
+                  <i class="bi bi-exclamation-triangle me-1"></i>
+                  Priority
+                </span>
+              <% end %>
+
+              <% if todo.completed? %>
+                <span class="badge text-bg-success status-badge">
+                  <i class="bi bi-check-lg me-1"></i>
+                  Completed
+                </span>
+              <% end %>
+
+            </div>
+
+          </div>
+
+
+          <hr>
+
+
+          <div class="d-flex flex-wrap gap-2">
+
+            <%= link_to todo_path(todo),
+                  class: "btn btn-sm btn-outline-primary" do %>
+              <i class="bi bi-eye me-1"></i>
+              View
+            <% end %>
+
+
+            <%= link_to edit_todo_path(todo),
+                  class: "btn btn-sm btn-outline-secondary" do %>
+              <i class="bi bi-pencil me-1"></i>
+              Edit
+            <% end %>
+
+
+            <%= button_to todo_path(todo),
+                  method: :delete,
+                  class: "btn btn-sm btn-outline-danger",
+                  form: {
+                    data: {
+                      turbo_confirm: "Delete this Todo?"
+                    }
+                  } do %>
+
+              <i class="bi bi-trash me-1"></i>
+              Delete
+
+            <% end %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
+<% else %>
+
+  <div class="app-card empty-state">
+
+    <i class="bi bi-clipboard2"></i>
+
+    <h4 class="mt-3">
+      No ToDos yet
+    </h4>
+
+    <p>
+      Create your first Todo to get started.
+    </p>
+
+    <%= link_to new_todo_path,
+          class: "btn btn-app-primary" do %>
+      <i class="bi bi-plus-lg me-1"></i>
+      Create ToDo
+    <% end %>
+
+  </div>
+
+<% end %>

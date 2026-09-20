@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+
+        <h1 class="h3 mb-4">
+          <i class="bi bi-person-circle me-2"></i>
+          My Account
+        </h1>
+
+        <div class="mb-3">
+          <strong>Name:</strong>
+          <%= @user.first_name %> <%= @user.last_name %>
+        </div>
+
+        <div class="mb-3">
+          <strong>Username:</strong>
+          <%= @user.username %>
+        </div>
+
+        <div class="mb-3">
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </div>
+
+        <hr class="my-4">
+
+        <h2 class="h5 text-danger">Delete Account</h2>
+
+        <p class="text-muted">
+          Deleting your account will permanently delete all of your
+          categories and ToDos.
+        </p>
+
+        <%= button_to account_path,
+              method: :delete,
+              class: "btn btn-danger",
+              form: {
+                data: {
+                  turbo_confirm: "Are you sure? This will permanently delete your account, categories, and ToDos."
+                }
+              } do %>
+
+          <i class="bi bi-trash me-1"></i>
+          Delete Account
+
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>
