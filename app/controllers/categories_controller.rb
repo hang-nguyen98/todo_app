@@ -1,10 +1,12 @@
 class CategoriesController < ApplicationController
+  # requires the user to be logged in for all actions
   before_action :require_login
+  # requires the set_category method to be called before the show, edit, update, and destroy actions
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories.includes(:todos)
   end
 
   # GET /categories/:id
@@ -18,8 +20,6 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = current_user.categories.find(params[:id])
-
   end
 
   # POST /categories
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(category_params)
 
     if @category.save
-      redirect_to categories_path, notice: "Category was successfully created."
+      redirect_to @category, notice: "Category was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,10 +35,8 @@ class CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/:id
   def update
-    @category = current_user.categories.find(params[:id])
-    @description = @category.description
     if @category.update(category_params)
-      redirect_to categories_path, notice: "Category was successfully updated."
+      redirect_to @category, notice: "Category was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,21 +45,17 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/:id
   def destroy
-    @category = current_user.categories.find(params[:id])
     @category.destroy
-
     redirect_to categories_path, notice: "Category was successfully destroyed."
   end
 
   private
+    # helper method to permit only the name and description params from the category form
     def category_params
       params.require(:category).permit(:name, :description)
     end
 
-    def set_category_options
-      @category_options = current_user.categories.pluck(:name, :id)
-    end
-
+    # make sure the logged-in user can only access their own categories
     def set_category
       @category = current_user.categories.find(params[:id])
     end

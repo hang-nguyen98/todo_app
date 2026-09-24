@@ -38,7 +38,6 @@
 
 
 <div class="app-card p-4">
-
   <div class="fw-bold mb-3">
     <i class="bi bi-list-check me-2"></i>
     ToDos in this category
@@ -46,45 +45,13 @@
 
 
   <% if @category.todos.any? %>
-
-    <div class="list-group">
-
-      <% @category.todos.each do |todo| %>
-        <%= link_to todo_path(todo),
-              class: "list-group-item list-group-item-action" do %>
-          <div class="d-flex align-items-center">
-
-            <% if todo.completed? %>
-              <i class="bi bi-check-circle-fill text-success me-3"></i>
-            <% else %>
-              <i class="bi bi-circle me-3 text-secondary"></i>
-            <% end %>
-
-            <span class="<%= 'text-decoration-line-through' if todo.completed? %>">
-              <%= todo.title %>
-            </span>
-
-
-            <% if todo.priority? %>
-              <span class="badge text-bg-danger ms-auto">
-                Priority
-              </span>
-            <% else %>
-              <i class="bi bi-chevron-right ms-auto text-secondary"></i>
-            <% end %>
-
-          </div>
-        <% end %>
-      <% end %>
-
+    <div class="row g-3">
+      <%= render partial: "todos/todo", collection: @todos %>
     </div>
 
   <% else %>
-
     <div class="text-secondary">
       No ToDos belong to this category yet.
     </div>
-
   <% end %>
-
 </div>

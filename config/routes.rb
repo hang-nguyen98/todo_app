@@ -10,13 +10,12 @@ Rails.application.routes.draw do
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy", as: :logout
 
-  # Show account 
-  get    "/account", to: "users#show", as: :account
-
-  # Account deletion
+  # User account 
+  get    "/account", to: "users#show",    as: :account
+  get    "/account/edit", to: "users#edit",    as: :edit_account
+  patch  "/account", to: "users#update"
   delete "/account", to: "users#destroy"
 
-  resources :users
   resources :categories
   resources :todos do
     collection do

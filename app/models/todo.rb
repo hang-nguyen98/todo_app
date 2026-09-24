@@ -3,7 +3,6 @@ class Todo < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
   validates :category_id, presence: true
-  validates :user_id, presence: true
 
   def when
 		"Created on #{ self.created_at.strftime("%m/%d/%Y at %H:%M") }"

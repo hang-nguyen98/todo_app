@@ -1,112 +1,102 @@
-<div class="row align-items-center py-5">
+<div class="container py-5">
 
-  <div class="col-lg-6 mb-5 mb-lg-0">
+  <!-- Intro -->
+  <section class="text-center mb-5">
+    <h1 class="fw-bold mb-4">
+      Simple Task Management 
+    </h1>
 
-    <span class="badge text-bg-primary mb-3">
-      Simple task management
-    </span>
+    <p class="lead text-muted mb-4">
+      Create categories, organize your ToDos, and keep track of what
+      you've completed.
+    </p>
 
-    <%# <h1 class="display-4 fw-bold mb-3">
-      Organize your work.
-      <br>
-      Finish what matters.
-    </h1> %>
-<%# 
-    <p class="lead text-secondary mb-4">
-      Create categories, organize your ToDos, mark important tasks,
-      and keep track of everything you've completed.
-    </p> %>
-
-    <% if logged_in? %>
-
-      <%= link_to todos_path,
-            class: "btn btn-app-primary btn-lg me-2" do %>
-        <i class="bi bi-list-task me-2"></i>
-        View My ToDos
-      <% end %>
-
-    <% else %>
-
-      <%= link_to signup_path,
-            class: "btn btn-app-primary btn-lg me-2" do %>
-        <i class="bi bi-person-plus me-2"></i>
-        Get Started
-      <% end %>
-
-      <%= link_to login_path,
-            class: "btn btn-outline-secondary btn-lg" do %>
-        Log In
-      <% end %>
-
-    <% end %>
-
-  </div>
+    <!-- App statistics -->
+    <div>
+      <%= get_stats(User.count, Todo.count) %>
+    </div>
+  </section>
 
 
-  <div class="col-lg-6">
+  <!-- How it works -->
+  <section class="pt-4 border-top">
+    <div class="text-center mb-5">
+      <p class="text-uppercase small fw-semibold text-muted mb-2">
+        Getting started
+      </p>
+    </div>
 
-    <div class="app-card p-4">
+    <div class="row g-4">
 
-      <div class="d-flex align-items-center mb-4">
-        <div>
-          <h4 class="mb-0">Today's Tasks</h4>
-        </div>
-        <%# TO-DO: edit the code to display the correct task information %>
-        
-        <%# 
-        <span class="badge text-bg-light ms-auto">
-          <i class="bi bi-calendar3 me-1"></i>
-           Today 
-        </span>
-      </div>
-
-        
-        
-      <div class="border rounded-3 p-3 mb-3">
-        <div class="d-flex align-items-center">
-          <i class="bi bi-circle me-3 text-secondary"></i>
-          
-            <div>
-            <strong>Finish Rails project</strong>
-            <div class="small text-secondary">
-              School
-            </div>
-          </div> 
-
-          <span class="badge text-bg-danger ms-auto">
-            Priority
-          </span>
-        </div>
-      </div>
-
-
-      <div class="border rounded-3 p-3 mb-3">
-        <div class="d-flex align-items-center">
-          <i class="bi bi-circle me-3 text-secondary"></i>
-
-          <div>
-            <strong>Buy groceries</strong>
-            <div class="small text-secondary">
-              Personal
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="border rounded-3 p-3 bg-light">
-        <div class="d-flex align-items-center">
-
-          <i class="bi bi-check-circle-fill me-3 text-success"></i>
-
-          <div class="text-decoration-line-through text-secondary">
-            Review assignment requirements
+      <!-- Step 1 -->
+      <div class="col-md-4">
+        <div class="h-100 p-4 border rounded-3 bg-white">
+          <div class="fs-3 mb-3">
+            <i class="bi bi-folder2-open"></i>
           </div>
 
+          <p class="small text-muted fw-semibold mb-2">
+            01
+          </p>
+
+          <h3 class="h5 fw-bold">
+            Create categories
+          </h3>
+
+          <p class="text-muted mb-0">
+            Organize your work into categories such as School,
+            Personal, or Work.
+          </p>
         </div>
-        </div>  %>
+      </div>
+
+
+      <!-- Step 2 -->
+      <div class="col-md-4">
+        <div class="h-100 p-4 border rounded-3 bg-white">
+          <div class="fs-3 mb-3">
+            <i class="bi bi-check2-square"></i>
+          </div>
+
+          <p class="small text-muted fw-semibold mb-2">
+            02
+          </p>
+
+          <h3 class="h5 fw-bold">
+            Add your ToDos
+          </h3>
+
+          <p class="text-muted mb-0">
+            Add tasks to a category and mark important items
+            as priority.
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Step 3 -->
+      <div class="col-md-4">
+        <div class="h-100 p-4 border rounded-3 bg-white">
+          <div class="fs-3 mb-3">
+            <i class="bi bi-check-circle"></i>
+          </div>
+
+          <p class="small text-muted fw-semibold mb-2">
+            03
+          </p>
+
+          <h3 class="h5 fw-bold">
+            Track your progress
+          </h3>
+
+          <p class="text-muted mb-0">
+            Mark tasks as complete and view all of your finished
+            ToDos in one place.
+          </p>
+        </div>
+      </div>
 
     </div>
-  </div>
+  </section>
 
 </div>

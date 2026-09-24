@@ -1,6 +1,12 @@
+<%# Form partial for creating or editing a category %>
 <% if category.errors.any? %>
   <div class="alert alert-danger">
-    <ul class="mb-0">
+    <strong>
+      <i class="bi bi-exclamation-circle me-1"></i>
+      Please fix the following:
+    </strong>
+
+    <ul class="mb-0 mt-2">
       <% category.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -28,10 +34,9 @@
 
 
   <div class="d-flex gap-2">
-    <%= form.submit class: "btn btn-app-primary" %>
-    <%= link_to "Cancel",
-          categories_path,
-          class: "btn btn-outline-secondary" %>
+    <%= form.submit category.persisted? ? "Update Category" : "Create Category",
+          class: "btn btn-dark"  %>
+    <%= link_to "Cancel", category.persisted? ? category_path(category) : categories_path, class: "btn btn-outline-secondary" %>
   </div>
 
 <% end %>
