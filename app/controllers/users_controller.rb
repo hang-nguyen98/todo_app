@@ -23,9 +23,8 @@ class UsersController < ApplicationController
 
     if @user.save
       reset_session
-      log_in @user
 
-      redirect_to todos_path,
+      redirect_to root_path,
                   notice: "You have successfully signed up."
     else
       render :new, status: :unprocessable_entity
